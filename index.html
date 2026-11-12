@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yohane H. Maluwa — Portfolio</title>
+  <meta name="description" content="Portfolio of Yohane H. Maluwa — BSc Computer Science student, full-stack developer and UI designer based in Blantyre, Malawi.">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+  <!-- Inter Tight (display + body) and Space Mono (micro-labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body id="top">
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <a href="index.html" class="brand">yohane<span>.dev</span></a>
+
+    <nav class="nav-menu" aria-label="Primary">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="animations.html">Animations</a>
+    </nav>
+
+    <a href="mailto:ymaluwa@gmail.com" class="btn btn-dark btn-sm header-cta">Get in touch</a>
+
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menu-overlay">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Fullscreen menu (mobile) -->
+  <div class="menu-overlay" id="menu-overlay">
+    <ul class="menu-links">
+      <li style="--i:0"><a href="index.html" class="active">Home</a></li>
+      <li style="--i:1"><a href="about.html">About</a></li>
+      <li style="--i:2"><a href="projects.html">Projects</a></li>
+      <li style="--i:3"><a href="animations.html">Animations</a></li>
+    </ul>
+    <div class="menu-meta">
+      <a href="mailto:ymaluwa@gmail.com">ymaluwa@gmail.com</a>
+      <a href="https://github.com/hanieyo1407" target="_blank" rel="noopener">GitHub</a>
+      <span>Blantyre, Malawi</span>
+    </div>
+  </div>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <p class="hero-meta">
+        <span>Portfolio — 2026</span>
+        <span class="dot">·</span>
+        <span>BSc Computer Science</span>
+        <span class="dot">·</span>
+        <span>Blantyre, Malawi</span>
+      </p>
+
+      <!-- Giant wordmark — characters split and rise on load -->
+      <h1 class="mega hero-name split" data-split aria-label="Yohane H. Maluwa">
+        <span class="line">Yohane</span><br>
+        <span class="line">H.&nbsp;Maluwa</span>
+      </h1>
+
+      <div class="hero-row">
+        <figure class="hero-photo reveal">
+          <img src="images/profile.jpg" alt="Portrait of Yohane H. Maluwa" width="800" height="1000">
+          <figcaption class="badge">Open to opportunities</figcaption>
+        </figure>
+
+        <div class="hero-intro reveal" style="--d:.08s">
+          <p class="typed-line">
+            <span data-typing='["Full-stack developer and UI designer.","AI/ML enthusiast — builder of hcode.","BSc Computer Science, DMI-SJBU.","Based in Blantyre, Malawi."]'></span><span class="cursor" aria-hidden="true"></span>
+          </p>
+
+          <!-- Welcome message -->
+          <p class="welcome">
+            Karibu! I'm <strong>Yohane H. Maluwa</strong>, a second-year
+            <strong>BSc Computer Science</strong> student at DMI — St. John the Baptist
+            University, Mangochi. I design and build web experiences, explore
+            machine learning, and ship open-source tools — currently an
+            <strong>Operations Officer at BEAN</strong>, an agritech brand I co-branded
+            in my first Multimedia Tools assignment.
+          </p>
+
+          <!-- Professional interests -->
+          <ul class="chips" aria-label="Professional interests">
+            <li>Full-stack web</li>
+            <li>UI/UX design</li>
+            <li>AI &amp; machine learning</li>
+            <li>Open source</li>
+            <li>Systems &amp; databases</li>
+            <li>Digital Malawi</li>
+          </ul>
+
+          <!-- CTA buttons -->
+          <div class="hero-actions">
+            <a href="projects.html" class="btn btn-dark">View projects <span class="arr">→</span></a>
+            <a href="mailto:ymaluwa@gmail.com" class="btn btn-line">Email me</a>
+          </div>
+
+          <dl class="hero-stats">
+            <div><dt>Projects</dt><dd>07</dd></div>
+            <div><dt>Semesters</dt><dd>04</dd></div>
+            <div><dt>Certifications</dt><dd>01</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- Infinite marquee strip -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Full-stack developer<i>&nbsp;·&nbsp;</i></span>
+        <span>UI &amp; UX design<i>&nbsp;·&nbsp;</i></span>
+        <span>AI &amp; machine learning<i>&nbsp;·&nbsp;</i></span>
+        <span>Open source<i>&nbsp;·&nbsp;</i></span>
+        <span>Systems &amp; databases<i>&nbsp;·&nbsp;</i></span>
+        <span>Digital Malawi<i>&nbsp;·&nbsp;</i></span>
+        <span>Full-stack developer<i>&nbsp;·&nbsp;</i></span>
+        <span>UI &amp; UX design<i>&nbsp;·&nbsp;</i></span>
+        <span>AI &amp; machine learning<i>&nbsp;·&nbsp;</i></span>
+        <span>Open source<i>&nbsp;·&nbsp;</i></span>
+        <span>Systems &amp; databases<i>&nbsp;·&nbsp;</i></span>
+        <span>Digital Malawi<i>&nbsp;·&nbsp;</i></span>
+      </div>
+    </div>
+
+    <!-- ================= SITE INDEX ================= -->
+    <section class="section">
+      <div class="sec-head">
+        <div class="top">
+          <p class="label label--lime">Site index</p>
+          <p class="label">03 pages</p>
+        </div>
+        <h2 class="display">Where to go <em>next.</em></h2>
+        <p class="sec-sub">Three stops on this site — each hand-coded in plain HTML, CSS and JavaScript. Hover a row.</p>
+      </div>
+
+      <ul class="row-list">
+        <li class="row-item reveal">
+          <a class="row-head" href="about.html">
+            <span class="row-num">(001)</span>
+            <span class="row-title">About me</span>
+            <span class="row-side">
+              <span class="row-tag">Education · Skills · Goals</span>
+              <span class="row-arrow">→</span>
+            </span>
+          </a>
+        </li>
+        <li class="row-item reveal" style="--d:.06s">
+          <a class="row-head" href="projects.html">
+            <span class="row-num">(002)</span>
+            <span class="row-title">Projects</span>
+            <span class="row-side">
+              <span class="row-tag">BEAN · STRATEC · hcode · more</span>
+              <span class="row-arrow">→</span>
+            </span>
+          </a>
+        </li>
+        <li class="row-item reveal" style="--d:.12s">
+          <a class="row-head" href="animations.html">
+            <span class="row-num">(003)</span>
+            <span class="row-title">Animated concepts</span>
+            <span class="row-side">
+              <span class="row-tag">Typing · Bars · Reveals</span>
+              <span class="row-arrow">→</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="footer-cta">
+      <p class="label" style="color:rgba(244,244,242,.5)">Open for work</p>
+      <h2>Let's build<br>something<i>.</i></h2>
+      <div class="btn-row">
+        <a href="mailto:ymaluwa@gmail.com" class="btn btn-dark">Email me <span class="arr">→</span></a>
+        <a href="projects.html" class="btn btn-line">View projects</a>
+      </div>
+    </div>
+
+    <div class="footer-grid">
+      <div>
+        <p class="brand">yohane<span>.dev</span></p>
+        <p class="footer-note" style="margin-top:14px">Hand-coded with plain HTML, CSS and JavaScript — no frameworks, no templates.</p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="animations.html">Animations</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:ymaluwa@gmail.com">ymaluwa@gmail.com</a></li>
+          <li><a href="https://github.com/hanieyo1407" target="_blank" rel="noopener">GitHub — hanieyo1407</a></li>
+          <li><a href="https://www.linkedin.com/in/yohane-maluwa" target="_blank" rel="noopener">LinkedIn — yohane-maluwa</a></li>
+          <li><span>+265 994 912 406</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="ghost" aria-hidden="true">Maluwa</p>
+
+    <div class="footer-base">
+      <span>© <span id="year">2026</span> Yohane H. Maluwa</span>
+      <span>BSc Computer Science — DMI-SJBU</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- Texture + custom cursor -->
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+</body>
+</html>

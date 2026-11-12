@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Concepts — Yohane H. Maluwa</title>
+  <meta name="description" content="Five animated concepts demonstrated and explained — typing effect, hover effects, animated background, animated skill bars and scroll reveals.">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body id="top">
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <a href="index.html" class="brand">yohane<span>.dev</span></a>
+
+    <nav class="nav-menu" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="animations.html" class="active">Animations</a>
+    </nav>
+
+    <a href="mailto:ymaluwa@gmail.com" class="btn btn-dark btn-sm header-cta">Get in touch</a>
+
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menu-overlay">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <div class="menu-overlay" id="menu-overlay">
+    <ul class="menu-links">
+      <li style="--i:0"><a href="index.html">Home</a></li>
+      <li style="--i:1"><a href="about.html">About</a></li>
+      <li style="--i:2"><a href="projects.html">Projects</a></li>
+      <li style="--i:3"><a href="animations.html" class="active">Animations</a></li>
+    </ul>
+    <div class="menu-meta">
+      <a href="mailto:ymaluwa@gmail.com">ymaluwa@gmail.com</a>
+      <a href="https://github.com/hanieyo1407" target="_blank" rel="noopener">GitHub</a>
+      <span>Blantyre, Malawi</span>
+    </div>
+  </div>
+
+  <main>
+    <!-- ================= PAGE HERO ================= -->
+    <section class="page-hero">
+      <p class="label label--lime">Motion studies</p>
+      <h1 class="split" data-split aria-label="Animated concepts.">
+        <span class="line">Animated</span><br>
+        <span class="line">concepts.</span>
+      </h1>
+      <p class="lede">Five distinct animation concepts, each demonstrated live below and explained in plain language — the same ideas that power this whole site.</p>
+    </section>
+
+    <section class="section concepts" style="padding-top: clamp(24px, 4vw, 48px)">
+
+      <!-- ========== CONCEPT 01 — TYPING EFFECT ========== -->
+      <article class="concept">
+        <div class="concept-head reveal">
+          <p class="concept-num">Concept 01</p>
+          <h2>The typing effect.</h2>
+          <p class="desc">Text that writes itself, character by character, then deletes and types the next phrase — like a terminal that never sleeps.</p>
+        </div>
+        <div class="concept-demo reveal" style="--d:.1s">
+          <div class="demo-box">
+            <h6 class="demo-tag">Live demo</h6>
+            <p class="typed-demo">
+              <span data-typing='["I write code that writes itself.","Full-stack developer.","AI/ML enthusiast.","From Blantyre with commits."]'></span><span class="cursor" aria-hidden="true"></span>
+            </p>
+          </div>
+          <div class="explain">
+            <h4>How it works</h4>
+            <p>
+              A phrase list lives in a <code>data-typing</code> attribute. JavaScript
+              <code>typeWriter()</code> adds one character per tick, pauses, deletes the
+              phrase, then moves to the next — looping forever via <code>setTimeout</code>.
+              The blinking caret is pure CSS: a small bar with a
+              <code>steps()</code> keyframe animation.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ========== CONCEPT 02 — HOVER EFFECTS ========== -->
+      <article class="concept">
+        <div class="concept-head reveal">
+          <p class="concept-num">Concept 02</p>
+          <h2>Hover effects.</h2>
+          <p class="desc">Four responses to a cursor: lift, invert, zoom and underline — the small physics that make interfaces feel alive.</p>
+        </div>
+        <div class="concept-demo reveal" style="--d:.1s">
+          <div class="demo-box" style="padding:18px">
+            <h6 class="demo-tag">Hover each card</h6>
+            <div class="hover-demos">
+              <div class="hover-demo lift">
+                <h3>Lift</h3>
+                <p>Card rises with a soft shadow — depth without weight.</p>
+              </div>
+              <div class="hover-demo invert">
+                <h3>Invert</h3>
+                <p>Colours swap to ink — maximum contrast, zero motion.</p>
+              </div>
+              <div class="hover-demo zoom">
+                <span class="lens" aria-hidden="true"></span>
+                <h3>Zoom</h3>
+                <p>The lens scales and rotates — a magnifier moment.</p>
+              </div>
+              <div class="hover-demo underline">
+                <h3>Underline</h3>
+                <p>A lime rule slides out from the left edge.</p>
+              </div>
+            </div>
+          </div>
+          <div class="explain">
+            <h4>How it works</h4>
+            <p>
+              All four are CSS only, driven by <code>:hover</code> and
+              <code>transition</code>. Lift animates <code>transform: translateY</code>
+              plus <code>box-shadow</code>; invert swaps
+              <code>background-color</code> / <code>color</code>; zoom scales a child
+              element; the underline animates <code>width</code> on an
+              <code>::after</code> pseudo-element.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ========== CONCEPT 03 — ANIMATED BACKGROUND ========== -->
+      <article class="concept">
+        <div class="concept-head reveal">
+          <p class="concept-num">Concept 03</p>
+          <h2>The animated background.</h2>
+          <p class="desc">A hairline grid that never stops drifting, with two light pulses orbiting through it — depth from the simplest geometry.</p>
+        </div>
+        <div class="concept-demo reveal" style="--d:.1s">
+          <div class="demo-box bg-demo">
+            <h6 class="demo-tag" style="color:rgba(244,244,242,.45)">Live demo</h6>
+            <span class="orbit" aria-hidden="true"></span>
+            <span class="orbit o2" aria-hidden="true"></span>
+            <p>background-position drifts 44px each loop — the grid appears to slide while every line stays perfectly still.</p>
+          </div>
+          <div class="explain">
+            <h4>How it works</h4>
+            <p>
+              Two <code>linear-gradient</code> layers paint vertical and horizontal
+              hairlines every 44px. A keyframe animation moves
+              <code>background-position</code> by exactly one tile size, so the loop is
+              seamless. The pulses are absolutely-positioned dots on an
+              <code>orbit</code> keyframe path with a soft lime glow.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ========== CONCEPT 04 — ANIMATED SKILL BARS ========== -->
+      <article class="concept">
+        <div class="concept-head reveal">
+          <p class="concept-num">Concept 04</p>
+          <h2>Animated skill bars.</h2>
+          <p class="desc">Progress bars that fill to their true value when they scroll into view — data revealing itself, not decorating.</p>
+        </div>
+        <div class="concept-demo reveal" style="--d:.1s">
+          <div class="demo-box" style="display:block; place-items:stretch">
+            <h6 class="demo-tag">Scroll-triggered</h6>
+            <div class="skill-bars" style="margin-top:10px">
+              <div class="bar-row" data-skill="90">
+                <div class="bar-head"><span class="name">HTML &amp; CSS</span><span class="bar-val">90%</span></div>
+                <div class="bar-track"><div class="bar-fill"></div></div>
+              </div>
+              <div class="bar-row" data-skill="85">
+                <div class="bar-head"><span class="name">JavaScript</span><span class="bar-val">85%</span></div>
+                <div class="bar-track"><div class="bar-fill"></div></div>
+              </div>
+              <div class="bar-row" data-skill="80">
+                <div class="bar-head"><span class="name">React / Next.js</span><span class="bar-val">80%</span></div>
+                <div class="bar-track"><div class="bar-fill"></div></div>
+              </div>
+              <div class="bar-row" data-skill="75">
+                <div class="bar-head"><span class="name">Python</span><span class="bar-val">75%</span></div>
+                <div class="bar-track"><div class="bar-fill"></div></div>
+              </div>
+              <div class="bar-row" data-skill="70">
+                <div class="bar-head"><span class="name">SQL / Databases</span><span class="bar-val">70%</span></div>
+                <div class="bar-track"><div class="bar-fill"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="explain">
+            <h4>How it works</h4>
+            <p>
+              Each row carries its target in <code>data-skill="90"</code>. An
+              <code>IntersectionObserver</code> fires once the row enters the viewport,
+              then JavaScript sets the fill's width to that percentage — CSS
+              <code>transition</code> does the easing. A lime dot marks the tip when the
+              bar settles.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ========== CONCEPT 05 — SCROLL REVEALS ========== -->
+      <article class="concept">
+        <div class="concept-head reveal">
+          <p class="concept-num">Concept 05</p>
+          <h2>Scroll reveals.</h2>
+          <p class="desc">Content waits below the fold, then fades and rises as you reach it — the four tiles ahead are doing it right now.</p>
+        </div>
+        <div class="concept-demo reveal" style="--d:.1s">
+          <div class="demo-box" style="padding:18px">
+            <h6 class="demo-tag">Watch these appear</h6>
+            <div class="reveal-demos">
+              <div class="reveal-demo reveal" style="--d:.0s">
+                <span class="idx">Tile 01</span>
+                <p>Every element with <code>.reveal</code> starts invisible and 26px low.</p>
+              </div>
+              <div class="reveal-demo reveal" style="--d:.08s">
+                <span class="idx">Tile 02</span>
+                <p>One IntersectionObserver watches all of them.</p>
+              </div>
+              <div class="reveal-demo reveal" style="--d:.16s">
+                <span class="idx">Tile 03</span>
+                <p>On intersect, <code>.visible</code> fades them up with easing.</p>
+              </div>
+              <div class="reveal-demo reveal" style="--d:.24s">
+                <span class="idx">Tile 04</span>
+                <p>A <code>--d</code> variable staggers each tile by 80ms.</p>
+              </div>
+            </div>
+          </div>
+          <div class="explain">
+            <h4>How it works</h4>
+            <p>
+              The observer adds <code>.visible</code> when a <code>.reveal</code> element
+              crosses a threshold — no scroll-position maths, no library. The staggered
+              delay comes from a CSS custom property, <code>transition-delay:
+              var(--d)</code>, so one rule drives the whole page.
+            </p>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="footer-cta">
+      <p class="label" style="color:rgba(244,244,242,.5)">Open for work</p>
+      <h2>Let's build<br>something<i>.</i></h2>
+      <div class="btn-row">
+        <a href="mailto:ymaluwa@gmail.com" class="btn btn-dark">Email me <span class="arr">→</span></a>
+        <a href="projects.html" class="btn btn-line">View projects</a>
+      </div>
+    </div>
+
+    <div class="footer-grid">
+      <div>
+        <p class="brand">yohane<span>.dev</span></p>
+        <p class="footer-note" style="margin-top:14px">Hand-coded with plain HTML, CSS and JavaScript — no frameworks, no templates.</p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="animations.html">Animations</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:ymaluwa@gmail.com">ymaluwa@gmail.com</a></li>
+          <li><a href="https://github.com/hanieyo1407" target="_blank" rel="noopener">GitHub — hanieyo1407</a></li>
+          <li><a href="https://www.linkedin.com/in/yohane-maluwa" target="_blank" rel="noopener">LinkedIn — yohane-maluwa</a></li>
+          <li><span>+265 994 912 406</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="ghost" aria-hidden="true">Maluwa</p>
+
+    <div class="footer-base">
+      <span>© <span id="year">2026</span> Yohane H. Maluwa</span>
+      <span>BSc Computer Science — DMI-SJBU</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+</body>
+</html>
