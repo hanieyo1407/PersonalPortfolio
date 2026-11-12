@@ -91,39 +91,6 @@ the site uses hand-written motion throughout:
 11. **Expandable project rows**: accordion via `grid-template-rows: 0fr → 1fr`.
 12. **Fullscreen mobile menu**: links stagger up inside a dark overlay.
 
-## How to Run Locally
-
-Just open `index.html` in any browser, no server or installation required.
-
-Or serve it locally (recommended, mirrors GitHub Pages):
-
-```bash
-cd PersonalPortfolio
-python3 -m http.server 8000
-# then visit http://localhost:8000
-```
-
-## How to Publish on GitHub Pages
-
-1. Create a new public repository on GitHub named **`personal-portfolio`**.
-2. Upload/push everything inside this `PersonalPortfolio/` folder to that repository
-   (so `index.html` sits at the repository root).
-3. In the repository: **Settings → Pages**.
-4. Under *Source*, choose **Deploy from a branch**, select **main** and **/(root)**, then Save.
-5. Wait 1 to 2 minutes. The site goes live at
-   `https://<your-username>.github.io/personal-portfolio/`.
-
-## Jekyll Theme
-
-GitHub Pages builds every repository with Jekyll. The `_config.yml` file sets the
-supported **jekyll-theme-minimal** theme, so the build is documented and predictable:
-
-- The four hand-coded pages carry no front matter, so Jekyll copies them through
-  unchanged and the custom design is untouched.
-- `404.md` uses the theme's default layout, so a wrong address shows a styled
-  not-found page instead of a blank error.
-- `README.md` is excluded from the built site; it stays as repository
-  documentation only.
 
 ## Customisation Notes
 

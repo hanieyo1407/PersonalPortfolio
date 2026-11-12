@@ -1,12 +1,4 @@
-# ---------------------------------------------------------------------------
-# Jekyll configuration for GitHub Pages.
-#
-# The four portfolio pages (index.html, about.html, projects.html,
-# animations.html) are hand-written HTML, CSS and JavaScript. They carry no
-# YAML front matter, so Jekyll copies them through unchanged and the custom
-# design is untouched. The theme below is a GitHub Pages supported gem; it
-# styles the markdown files and powers the themed 404 page.
-# ---------------------------------------------------------------------------
+
 
 theme: jekyll-theme-minimal
 
@@ -17,7 +9,7 @@ description: >-
   Portfolio of Yohane H. Maluwa, BSc Computer Science student, full-stack
   developer and UI designer based in Blantyre, Malawi.
 url: https://hanieyo1407.github.io
-baseurl: /personal-portfolio
+baseurl: /PersonalPortfolio
 
 # Keep repository documentation and local tooling out of the built site
 exclude:
