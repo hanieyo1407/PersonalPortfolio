@@ -1,37 +1,14 @@
-/* ==========================================================================
-   YOHANE H. MALUWA — PORTFOLIO SCRIPTS
-   Plain JavaScript. No libraries, no frameworks.
 
-   Modules:
-     01  Environment flags (reduced motion, fine pointer)
-     02  Sticky header state
-     03  Fullscreen menu (mobile)
-     04  Char-split headings + reveal
-     05  Scroll reveals (.reveal -> .visible)
-     06  Typing effect (data-typing)
-     07  Animated skill bars (data-skill)
-     08  Expandable project rows (accordion)
-     09  Cursor-following project preview
-     10  Magnetic buttons
-     11  Custom cursor (dot + lagging ring)
-     12  Footer year
-   ========================================================================== */
 
 (function () {
   "use strict";
 
-  /* ------------------------------------------------------------------
-     01. ENVIRONMENT FLAGS
-     Respecting the user's motion preference and input type.
-     ------------------------------------------------------------------ */
+
   const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const FINE = window.matchMedia("(pointer: fine)").matches;
   const DESKTOP = FINE && window.innerWidth > 820;
 
-  /* ------------------------------------------------------------------
-     02. STICKY HEADER STATE
-     Adds a hairline under the header once the page scrolls.
-     ------------------------------------------------------------------ */
+
   const header = document.querySelector(".site-header");
 
   function onScroll() {
@@ -41,10 +18,7 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* ------------------------------------------------------------------
-     03. FULLSCREEN MENU (mobile)
-     The hamburger opens a dark overlay; links stagger up via CSS.
-     ------------------------------------------------------------------ */
+
   const toggle = document.querySelector(".nav-toggle");
   const overlay = document.getElementById("menu-overlay");
 
@@ -67,23 +41,18 @@
       document.body.classList.toggle("lock", opening);
     });
 
-    // Close after choosing a page
+    
     overlay.querySelectorAll("a").forEach(function (a) {
       a.addEventListener("click", closeMenu);
     });
 
-    // Close with Escape
+    
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") closeMenu();
     });
   }
 
-  /* ------------------------------------------------------------------
-     04. CHAR-SPLIT HEADINGS
-     Every [data-split] heading has its letters wrapped in <span class="ch">
-     with a stagger index (--i). When it scrolls into view we add .in and
-     CSS animates each character up into place.
-     ------------------------------------------------------------------ */
+  
   function splitChars(el) {
     // Announce the full phrase to screen readers, hide the split spans.
     const text = el.textContent.replace(/\s+/g, " ").trim();
@@ -140,11 +109,7 @@
     }
   }
 
-  /* ------------------------------------------------------------------
-     05. SCROLL REVEALS
-     One observer for every .reveal element on the page. CSS owns the
-     transition; JS only flips the class when the element enters view.
-     ------------------------------------------------------------------ */
+
   const revealEls = document.querySelectorAll(".reveal");
 
   if ("IntersectionObserver" in window) {
@@ -168,11 +133,7 @@
     });
   }
 
-  /* ------------------------------------------------------------------
-     06. TYPING EFFECT
-     Phrases live in a JSON list inside data-typing. We type a character
-     at a time, hold, delete, then move to the next phrase — forever.
-     ------------------------------------------------------------------ */
+
   const TYPE_SPEED = 55;      // ms per character typed
   const DELETE_SPEED = 30;    // ms per character deleted
   const HOLD_TIME = 1600;     // pause when a phrase is complete
@@ -217,22 +178,18 @@
     try {
       phrases = JSON.parse(el.getAttribute("data-typing"));
     } catch (err) {
-      return; // malformed attribute — leave the element empty
+      return; 
     }
     if (!phrases.length) return;
 
     if (REDUCED) {
-      el.textContent = phrases[0]; // calm, static text
+      el.textContent = phrases[0]; 
     } else {
       typeLoop(el, phrases);
     }
   });
 
-  /* ------------------------------------------------------------------
-     07. ANIMATED SKILL BARS
-     Each .bar-row carries data-skill="85". When it scrolls into view we
-     set the fill width; the CSS transition does the easing for us.
-     ------------------------------------------------------------------ */
+ 
   const barRows = document.querySelectorAll(".bar-row[data-skill]");
 
   if ("IntersectionObserver" in window) {
@@ -264,12 +221,7 @@
     });
   }
 
-  /* ------------------------------------------------------------------
-     08. EXPANDABLE PROJECT ROWS
-     Clicking a row head unfolds the details panel (CSS grid rows animate
-     the height). Opening one row folds the others — one story at a time.
-     Heads are divs with role="button" so they stay keyboard friendly.
-     ------------------------------------------------------------------ */
+
   const projectRows = document.querySelectorAll(".p-row");
 
   projectRows.forEach(function (row) {
@@ -305,11 +257,7 @@
     });
   });
 
-  /* ------------------------------------------------------------------
-     09. CURSOR-FOLLOWING PROJECT PREVIEW (desktop only)
-     Hovering a project row head makes a floating image trail the cursor
-     with a slight lag (lerp), like a card being carried along.
-     ------------------------------------------------------------------ */
+
   const preview = document.querySelector(".p-preview");
 
   if (preview && DESKTOP && !REDUCED) {
@@ -339,7 +287,7 @@
       if (rafId === null) rafId = requestAnimationFrame(followLoop);
     }
 
-    document.querySelectorAll(".p-row").forEach(function (row) {
+    document.querySelectorAll("li.row-item[data-img]").forEach(function (row) {
       const head = row.querySelector(".row-head");
 
       if (head) {
@@ -368,10 +316,7 @@
     }, { passive: true });
   }
 
-  /* ------------------------------------------------------------------
-     10. MAGNETIC BUTTONS (desktop only)
-     Buttons lean a few pixels toward the cursor and spring back on exit.
-     ------------------------------------------------------------------ */
+
   if (DESKTOP && !REDUCED) {
     document.querySelectorAll(".btn").forEach(function (btn) {
       btn.addEventListener("mousemove", function (e) {
@@ -389,13 +334,7 @@
     });
   }
 
-  /* ------------------------------------------------------------------
-     11. CUSTOM POINTER
-     A custom arrow pointer (inline SVG, ink fill + white halo) that
-     tracks the mouse instantly — exactly like a native cursor. Over
-     anything interactive it swaps to a hand glyph, mirroring the normal
-     arrow → hand behaviour of a real mouse. Fine pointers only.
-     ------------------------------------------------------------------ */
+
   const pointer = document.querySelector(".cursor-pointer");
 
   if (pointer && FINE && !REDUCED) {
@@ -415,7 +354,7 @@
       }
     }, { passive: true });
 
-    // Swap the arrow for a hand over interactive elements (event delegation)
+    
     const HOVER_SELECTOR = 'a, button, [role="button"], .hover-demo, input, textarea, select';
 
     document.addEventListener("mouseover", function (e) {
@@ -430,17 +369,14 @@
       }
     });
 
-    // Hide the custom pointer when the mouse leaves the window
+    
     document.addEventListener("mouseleave", function () {
       document.body.classList.remove("cursor-active");
       active = false;
     });
   }
 
-  /* ------------------------------------------------------------------
-     12. FOOTER YEAR
-     Keeps the copyright year honest without a manual edit.
-     ------------------------------------------------------------------ */
+
   const yearEl = document.getElementById("year");
   if (yearEl) {
     yearEl.textContent = String(new Date().getFullYear());

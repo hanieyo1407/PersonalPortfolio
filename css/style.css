@@ -720,6 +720,7 @@ hr {
   letter-spacing: -.03em;
   line-height: 1.05;
   transition: color .3s ease, transform .45s cubic-bezier(.19, 1, .22, 1);
+  overflow-wrap: anywhere;   /* long repo names wrap instead of overflowing on mobile */
 }
 
 /* Stacked title + one-line description (used in the GitHub archive rows) */
@@ -738,6 +739,7 @@ hr {
   color: var(--muted);
   max-width: 62ch;
   transition: color .3s ease;
+  overflow-wrap: anywhere;
 }
 
 .row-side {
