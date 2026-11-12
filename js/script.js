@@ -390,46 +390,32 @@
   }
 
   /* ------------------------------------------------------------------
-     11. CUSTOM CURSOR
-     A small dot tracks the pointer exactly; a larger ring trails behind
-     with easing and grows over anything interactive. Fine pointers only.
+     11. CUSTOM POINTER
+     A custom arrow pointer (inline SVG, ink fill + white halo) that
+     tracks the mouse instantly — exactly like a native cursor. Over
+     anything interactive it swaps to a hand glyph, mirroring the normal
+     arrow → hand behaviour of a real mouse. Fine pointers only.
      ------------------------------------------------------------------ */
-  const dot = document.querySelector(".cursor-dot");
-  const ring = document.querySelector(".cursor-ring");
+  const pointer = document.querySelector(".cursor-pointer");
 
-  if (dot && ring && FINE && !REDUCED) {
+  if (pointer && FINE && !REDUCED) {
     document.body.classList.add("has-cursor");
 
-    let mx = -100;
-    let my = -100;   // real pointer position
-    let rx = -100;
-    let ry = -100;   // ring position (lerped)
-    let active = false;
+    let shown = false;
 
     document.addEventListener("mousemove", function (e) {
-      mx = e.clientX;
-      my = e.clientY;
+      // The arrow tip sits at (0,0) inside the SVG, so translating the
+      // whole element to the mouse position lands the tip exactly where
+      // a native cursor would be — no lag, no easing.
+      pointer.style.transform = "translate(" + e.clientX + "px, " + e.clientY + "px)";
 
-      if (!active) {
-        active = true;
-        rx = mx;
-        ry = my;
+      if (!shown) {
+        shown = true;
         document.body.classList.add("cursor-active");
-        ringLoop();
       }
-
-      // The dot has no lag at all
-      dot.style.transform = "translate(" + mx + "px, " + my + "px)";
     }, { passive: true });
 
-    function ringLoop() {
-      rx += (mx - rx) * 0.16;
-      ry += (my - ry) * 0.16;
-      ring.style.transform = "translate(" + rx + "px, " + ry + "px)";
-      requestAnimationFrame(ringLoop);
-    }
-
-    // Grow the ring over interactive elements (event delegation)
+    // Swap the arrow for a hand over interactive elements (event delegation)
     const HOVER_SELECTOR = 'a, button, [role="button"], .hover-demo, input, textarea, select';
 
     document.addEventListener("mouseover", function (e) {
@@ -444,7 +430,7 @@
       }
     });
 
-    // Hide the custom cursor when the pointer leaves the window
+    // Hide the custom pointer when the mouse leaves the window
     document.addEventListener("mouseleave", function () {
       document.body.classList.remove("cursor-active");
       active = false;

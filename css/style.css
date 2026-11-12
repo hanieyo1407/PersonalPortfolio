@@ -722,6 +722,24 @@ hr {
   transition: color .3s ease, transform .45s cubic-bezier(.19, 1, .22, 1);
 }
 
+/* Stacked title + one-line description (used in the GitHub archive rows) */
+.row-main {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.row-desc {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .02em;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 62ch;
+  transition: color .3s ease;
+}
+
 .row-side {
   display: flex;
   align-items: center;
@@ -749,6 +767,8 @@ hr {
 
 .row-item:hover .row-num,
 .row-item:hover .row-tag { color: rgba(244, 244, 242, .55); }
+
+.row-item:hover .row-desc { color: rgba(244, 244, 242, .6); }
 
 .row-item:hover .row-title { transform: translateX(10px); }
 
@@ -1745,46 +1765,52 @@ hr {
 .footer-base a:hover { color: var(--lime); }
 
 /* --------------------------------------------------------------------------
-   14. CUSTOM CURSOR
-   Dot follows the pointer instantly; ring lags behind with lerp.
-   JS adds .has-cursor to <body> on fine pointers, removes native cursor.
+   14. CUSTOM POINTER
+   A custom arrow pointer (inline SVG) that follows the mouse instantly,
+   swapping to a hand glyph over links and buttons — normal mouse
+   behaviour with a hand-drawn look. JS adds .has-cursor to <body> on
+   fine pointers and hides the native cursor.
    -------------------------------------------------------------------------- */
-.cursor-dot,
-.cursor-ring {
+.cursor-pointer {
   position: fixed;
   top: 0; left: 0;
-  border-radius: 50%;
   pointer-events: none;
   z-index: 90;
   opacity: 0;
-  transition: opacity .3s ease, width .25s ease, height .25s ease,
-              background-color .25s ease, border-color .25s ease;
+  will-change: transform;
 }
 
-.cursor-dot {
-  width: 7px; height: 7px;
-  background: var(--ink);
+/* Only visible once the mouse has actually moved inside the window */
+body.cursor-active .cursor-pointer { opacity: 1; }
+
+.cursor-pointer svg {
+  position: absolute;
+  top: 0; left: 0;
+  display: block;
+  filter: drop-shadow(0 1px 1.5px rgba(0, 0, 0, .35));
 }
 
-.cursor-ring {
-  width: 34px; height: 34px;
-  border: 1.4px solid rgba(22, 22, 22, .4);
+/* The hand glyph only appears over interactive elements */
+.c-hand {
+  transform: translate(-7px, -1px);   /* fingertip = mouse hotspot */
+  opacity: 0;
 }
 
-body.cursor-active .cursor-dot,
-body.cursor-active .cursor-ring { opacity: 1; }
+body.cursor-hover .c-hand  { opacity: 1; }
+body.cursor-hover .c-arrow { opacity: 0; }
 
-/* Grow when hovering anything interactive */
-body.cursor-hover .cursor-ring {
-  width: 58px; height: 58px;
-  border-color: rgba(22, 22, 22, .75);
-  background: rgba(200, 246, 93, .14);
+/* Ink glyph with a white halo so it reads on light AND dark surfaces */
+.cursor-outline {
+  fill: #fff;
+  stroke: #fff;
+  stroke-width: 3.2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
 }
-
-body.cursor-hover .cursor-dot { background: var(--ink); }
+.cursor-fill { fill: var(--ink); }
 
 @media (pointer: coarse) {
-  .cursor-dot, .cursor-ring { display: none; }
+  .cursor-pointer { display: none; }
 }
 
 /* --------------------------------------------------------------------------
