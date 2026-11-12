@@ -32,6 +32,8 @@ PersonalPortfolio/
 ├── about.html          ← About me
 ├── projects.html       ← My projects
 ├── animations.html     ← Animated concepts demos
+├── _config.yml         ← Jekyll theme configuration (GitHub Pages)
+├── 404.md              ← Themed not-found page (uses the Jekyll theme)
 ├── css/
 │   └── style.css       ← All styling (external stylesheet)
 ├── js/
@@ -110,6 +112,18 @@ python3 -m http.server 8000
 4. Under *Source*, choose **Deploy from a branch**, select **main** and **/(root)**, then Save.
 5. Wait 1 to 2 minutes. The site goes live at
    `https://<your-username>.github.io/personal-portfolio/`.
+
+## Jekyll Theme
+
+GitHub Pages builds every repository with Jekyll. The `_config.yml` file sets the
+supported **jekyll-theme-minimal** theme, so the build is documented and predictable:
+
+- The four hand-coded pages carry no front matter, so Jekyll copies them through
+  unchanged and the custom design is untouched.
+- `404.md` uses the theme's default layout, so a wrong address shows a styled
+  not-found page instead of a blank error.
+- `README.md` is excluded from the built site; it stays as repository
+  documentation only.
 
 ## Customisation Notes
 
